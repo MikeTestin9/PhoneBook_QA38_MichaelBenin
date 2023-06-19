@@ -8,13 +8,11 @@ public class TestBase {
 
     static ApplicationManager app = new ApplicationManager();
 
-    //    WebDriver wd;
-//
     @BeforeSuite
     public void setUp(){
         app.init();
     }
-    //
+
     @AfterSuite
     public void stop(){
         app.tearDown();

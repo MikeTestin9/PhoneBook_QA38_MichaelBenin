@@ -12,7 +12,7 @@ public class ApplicationManager {
     WebDriver wd;
     HelperUser user;
 
-    public HelperUser getUser() {
+    public HelperUser getUser() { //method getter
         return user;
     }
 

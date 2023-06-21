@@ -1,5 +1,6 @@
 package tests;
 
+import models.User;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
@@ -12,6 +13,20 @@ public class LoginTests extends TestBase{
         if(app.getUser().isLogged()){
             app.getUser().logout();
         }
+    }
+
+    @Test
+    public void loginPositiveUserData(){
+        User user = new User()
+                .withEmail("mb@gmail.com")
+                .withPassword("Mb12345$")
+                ;
+
+        app.getUser().openLoginForm();               //open login form
+        app.getUser().fillLoginForm(user);           //fill login form
+        app.getUser().submitLogin();                 //click on button Login
+        app.getUser().pause(3000);   //pause for 3 seconds
+        Assert.assertTrue(app.getUser().isElementPresent(By.xpath("//button")));
     }
 
     @Test

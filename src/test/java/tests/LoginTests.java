@@ -47,8 +47,11 @@ public class LoginTests extends TestBase{
         app.getUser().openLoginForm();       //open login form
         app.getUser().fillLoginForm(email, password);   //fill login form
         app.getUser().submitLogin();     //click on button Login
-        app.getUser().pause(3000);   //pause for 3 seconds
-        Assert.assertTrue(app.getUser().isElementPresent(By.xpath("//button")));
+      // app.getUser().pause(3000);   //pause for 3 seconds
+        Assert.assertTrue(app.getUser().isWrongFormatMessage());
+        Assert.assertTrue(app.getUser().isAlertPresent());
+
+
     }
     //надо закрыть выплывающее окно.
 

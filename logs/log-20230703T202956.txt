@@ -1,0 +1,32 @@
+20:29:59 INFO  tests.TestBase - Method loginPositiveTestBase is started
+20:29:59 INFO  manager.WebDriverListener - Start searching element ----> By.xpath: //*[.='Sign Out']
+20:30:04 INFO  manager.WebDriverListener - Element with locator ----> By.xpath: //*[.='Sign Out'] is found
+20:30:04 INFO  manager.WebDriverListener - Start searching element ----> By.xpath: //*[.='LOGIN']
+20:30:04 INFO  manager.WebDriverListener - Element with locator ----> By.xpath: //*[.='LOGIN'] is found
+20:30:04 INFO  manager.WebDriverListener - Start searching element ----> By.xpath: //input[1]
+20:30:04 INFO  manager.WebDriverListener - Element with locator ----> By.xpath: //input[1] is found
+20:30:04 INFO  manager.WebDriverListener - Start searching element ----> By.xpath: //input[2]
+20:30:04 INFO  manager.WebDriverListener - Element with locator ----> By.xpath: //input[2] is found
+20:30:04 INFO  manager.WebDriverListener - Start searching element ----> By.xpath: //button[1]
+20:30:04 INFO  manager.WebDriverListener - Element with locator ----> By.xpath: //button[1] is found
+20:30:07 INFO  manager.WebDriverListener - Start searching element ----> By.xpath: //button
+20:30:07 INFO  manager.WebDriverListener - Something went wrong!
+20:30:07 INFO  manager.WebDriverListener - no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=114.0.5735.199)
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'LAPTOP-AO3EVK79', ip: '192.168.1.174', os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_333'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 114.0.5735.199, chrome: {chromedriverVersion: 114.0.5735.90 (386bc09e8f4f..., userDataDir: C:\Users\micha\AppData\Loca...}, goog:chromeOptions: {debuggerAddress: localhost:64910}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 357f01766cd79706b6ef439b3ec191eb
+*** Element info: {Using=xpath, value=//button}
+20:30:07 INFO  manager.WebDriverListener - org.openqa.selenium.NoSuchWindowException: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=114.0.5735.199)
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'LAPTOP-AO3EVK79', ip: '192.168.1.174', os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_333'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 114.0.5735.199, chrome: {chromedriverVersion: 114.0.5735.90 (386bc09e8f4f..., userDataDir: C:\Users\micha\AppData\Loca...}, goog:chromeOptions: {debuggerAddress: localhost:64910}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 357f01766cd79706b6ef439b3ec191eb
+*** Element info: {Using=xpath, value=//button}
+20:30:07 INFO  tests.TestBase - ==================================

@@ -27,6 +27,7 @@ public class ApplicationManager {
         wd = new EventFiringWebDriver(new ChromeDriver());
         wd.register(new WebDriverListener());
         user = new HelperUser(wd);
+//        wd.manage().window().maximize();
         wd.navigate().to("https://telranedu.web.app/home");
         wd.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
     }

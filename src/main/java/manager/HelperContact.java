@@ -33,4 +33,16 @@ public class HelperContact extends HelperBase{
         return phone.equals(contact.getPhone());
     }
 
+    public int contactCount() {
+
+        int tmp = wd.findElements(By.cssSelector("div[class='contact-item_card__2SOIM']")).size();
+        System.out.println(wd.findElements(By.cssSelector("div[class='contact-item_card__2SOIM']")).size());
+        return tmp;
+    }
+    public void clickOnTheFirstContactFromTheDiv(){
+        click(By.xpath("//div[@class='contact-item_card__2SOIM']"));
+    }
+    public void cklickOnRemoveButton() {
+        click(By.xpath("//button[.='Remove']"));
+    }
 }

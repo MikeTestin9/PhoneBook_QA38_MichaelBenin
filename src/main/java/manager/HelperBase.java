@@ -47,8 +47,9 @@ public class HelperBase {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-
+    }
+    public void refreshPage(){
+        wd.navigate().refresh();
     }
 
 }

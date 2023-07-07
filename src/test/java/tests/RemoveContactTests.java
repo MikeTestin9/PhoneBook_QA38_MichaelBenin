@@ -1,7 +1,5 @@
 package tests;
 
-import models.Contact;
-import org.openqa.selenium.By;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.Assert;
@@ -22,12 +20,19 @@ public class RemoveContactTests extends TestBase{
         }
     }
 
+    @Test // Class work 13
+    public void removeOneContactPositive(){
+        int res = app.getContact().removeOneContact();
+        Assert.assertEquals(-1, res);
+    }
     @Test
+    public void revomeAllContactsPositive(){
+        app.getContact().removeAllContacts();
+        Assert.assertTrue(app.getContact().isNoContacts());
+    }
+
+    @Test //Home work 12
     public void removeContactPositive(){
-        // создаем переменную темп - добавляем в неё метод подсчёта дивов.
-        // надо кликнуть на контакт, если он существует. пока без заморочек - контакт существует.
-        // нажимаем на кнопку ремув
-        // проверяем, что контакт удалился, считаем ещё раз количество дивов и должно быть минус 1 от темпа
 
 
         int tmp = app.getContact().contactCount();

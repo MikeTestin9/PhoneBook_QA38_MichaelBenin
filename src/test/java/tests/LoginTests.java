@@ -2,8 +2,8 @@ package tests;
 
 import models.User;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -53,7 +53,6 @@ public class LoginTests extends TestBase{
 
 
     }
-    //надо закрыть выплывающее окно.
 
     @Test
     public void loginNegativeTestWrongPassword() {
@@ -62,8 +61,14 @@ public class LoginTests extends TestBase{
         app.getUser().fillLoginForm(email, password);   //fill login form
         app.getUser().submitLogin();     //click on button Login
         app.getUser().pause(3000);   //pause for 3 seconds
-        Assert.assertTrue(app.getUser().isElementPresent(By.xpath("//button")));
+        Assert.assertTrue(app.getUser().isWrongFormatMessage());
+        Assert.assertTrue(app.getUser().isAlertPresent());
     }
-    //надо тоже закрыть выплывающее окно.
+    @AfterMethod
+    public void tearDown(){
+        if(app.getUser().isLogged()){
+            app.getUser().logout();
+        }
+    }
 
 }

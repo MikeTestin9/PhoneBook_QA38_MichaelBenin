@@ -3,9 +3,9 @@ package tests;
 import manager.TestNgListener;
 import models.User;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
@@ -13,6 +13,12 @@ import org.testng.annotations.Test;
 
 public class RegistrationTests extends TestBase{
 
+    @BeforeMethod
+    public void precondition(){
+        if(app.getUser().isLogged()){
+            app.getUser().logout();
+        }
+    }
     @Test
     public void registrationPositive(){
         int i = (int)(System.currentTimeMillis()/1000)%3600;
@@ -28,7 +34,6 @@ public class RegistrationTests extends TestBase{
         Assert.assertTrue(app.getUser().isElementPresent(By.xpath("//button")));
     }
 
-
     @Test
     public void registrationNegativeWrongEmail(){
         int i = (int)(System.currentTimeMillis()/1000)%3600;
@@ -36,6 +41,8 @@ public class RegistrationTests extends TestBase{
         app.getUser().openLoginForm();
         app.getUser().fillLoginForm(email, password);
         app.getUser().submitRegistration();
+        Assert.assertTrue(app.getUser().isWrongFormatMessage());
+        Assert.assertTrue(app.getUser().isAlertPresent());
     }
     @Test
     public void registrationNegativeWrongPassword(){
@@ -44,11 +51,15 @@ public class RegistrationTests extends TestBase{
         app.getUser().openLoginForm();
         app.getUser().fillLoginForm(email, password);
         app.getUser().submitRegistration();
+        Assert.assertTrue(app.getUser().isWrongFormatMessage());
+        Assert.assertTrue(app.getUser().isAlertPresent());
     }
 
     @AfterMethod
     public void tearDown(){
-
+        if(app.getUser().isLogged()){
+            app.getUser().logout();
+        }
     }
 
 }

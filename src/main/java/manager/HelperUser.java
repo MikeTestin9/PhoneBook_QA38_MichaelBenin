@@ -58,10 +58,8 @@ public class HelperUser extends HelperBase{
         Alert alert = new WebDriverWait(wd,10)
                 .until(ExpectedConditions.alertIsPresent());
         return alert.getText().contains("Wrong email or password");
-
-
-
     }
+
 
 
 

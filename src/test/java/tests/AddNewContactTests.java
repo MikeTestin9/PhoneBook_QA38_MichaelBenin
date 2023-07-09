@@ -4,25 +4,27 @@ import models.Contact;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.Assert;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 public class AddNewContactTests extends TestBase{
 
-    Logger logger = LoggerFactory.getLogger(AddNewContactTests.class);
+    static Logger logger = LoggerFactory.getLogger(AddNewContactTests.class);
 
     @BeforeMethod
     public void precondition(){
-        if(!app.getUser().isLogged()){ // ! значит обратное. если незалогинен, то ниже
+        if(!app.getUser().isLogged()){
             String email = "mb@gmail.com", password = "Mb12345$";
-            app.getUser().openLoginForm();       //open login form
-            app.getUser().fillLoginForm(email, password);   //fill login form
-            app.getUser().submitLogin();     //click on button Login
+            app.getUser().openLoginForm();
+            app.getUser().fillLoginForm(email, password);
+            app.getUser().submitLogin();
         }
     }
 
-    @Test(invocationCount = 5)
-    public void addNewContactPositive(){
+    @Test(invocationCount = 2)
+    public static void addNewContactPositive(){
         int i = (int)(System.currentTimeMillis()/1000)%3600;
 
         Contact contact = Contact.builder()      // так как создаём через ламбок
@@ -42,5 +44,12 @@ public class AddNewContactTests extends TestBase{
         app.getContact().pause(3000);
 
         Assert.assertTrue(app.getContact().isContactCreated(contact));
+    }
+
+    @AfterClass
+    public void tearDown(){
+        if(app.getUser().isLogged()){
+            app.getUser().logout();
+        }
     }
 }

@@ -3,20 +3,25 @@ package tests;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.Assert;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 
 public class RemoveContactTests extends TestBase{
 
     Logger logger = LoggerFactory.getLogger(RemoveContactTests.class);
 
-    @BeforeMethod
-    public void precondition(){
-        if(!app.getUser().isLogged()){ // ! значит обратное. если незалогинен, то ниже
+    @BeforeClass
+    public void precondition() {
+        if (!app.getUser().isLogged()) {
             String email = "mb@gmail.com", password = "Mb12345$";
             app.getUser().openLoginForm();
             app.getUser().fillLoginForm(email, password);
             app.getUser().submitLogin();
+        }
+    }
+    @BeforeMethod
+    public void pretest(){
+        if(app.getContact().isNoContacts()) {
+            AddNewContactTests.addNewContactPositive();
         }
     }
 
@@ -26,7 +31,7 @@ public class RemoveContactTests extends TestBase{
         Assert.assertEquals(-1, res);
     }
     @Test
-    public void revomeAllContactsPositive(){
+    public void removeAllContactsPositive(){
         app.getContact().removeAllContacts();
         Assert.assertTrue(app.getContact().isNoContacts());
     }
@@ -49,6 +54,13 @@ public class RemoveContactTests extends TestBase{
         logger.info("Amount of contacts after removing = " + count);
         Assert.assertEquals(count, tmp-1);
 
+    }
+
+    @AfterClass
+    public void tearDown(){
+        if(app.getUser().isLogged()){
+            app.getUser().logout();
+        }
     }
 }
 

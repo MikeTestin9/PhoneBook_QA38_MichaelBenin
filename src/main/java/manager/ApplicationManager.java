@@ -50,8 +50,8 @@ public class ApplicationManager {
         wd.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
     }
 
-        @AfterSuite
+        @AfterSuite(alwaysRun = true)
     public void tearDown(){
-        wd.quit();
+        //wd.quit();
     }
 }

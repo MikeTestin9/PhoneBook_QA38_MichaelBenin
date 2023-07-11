@@ -13,7 +13,7 @@ public class AddNewContactTests extends TestBase{
 
     static Logger logger = LoggerFactory.getLogger(AddNewContactTests.class);
 
-    @BeforeMethod
+    @BeforeMethod(alwaysRun = true)
     public void precondition(){
         if(!app.getUser().isLogged()){
             String email = "mb@gmail.com", password = "Mb12345$";
@@ -23,7 +23,7 @@ public class AddNewContactTests extends TestBase{
         }
     }
 
-    @Test(invocationCount = 2)
+    @Test(invocationCount = 2, groups = {"positive"})
     public static void addNewContactPositive(){
         int i = (int)(System.currentTimeMillis()/1000)%3600;
 
@@ -46,7 +46,7 @@ public class AddNewContactTests extends TestBase{
         Assert.assertTrue(app.getContact().isContactCreated(contact));
     }
 
-    @AfterClass
+    @AfterClass(alwaysRun = true)
     public void tearDown(){
         if(app.getUser().isLogged()){
             app.getUser().logout();

@@ -8,7 +8,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 public class LoginTests extends TestBase{
-    @BeforeMethod
+    @BeforeMethod(alwaysRun = true)
     public void precondition(){
         if(app.getUser().isLogged()){
             app.getUser().logout();
@@ -29,7 +29,7 @@ public class LoginTests extends TestBase{
         Assert.assertTrue(app.getUser().isElementPresent(By.xpath("//button")));
     }
 
-    @Test
+    @Test(groups = {"smoke","positive"})
     public void loginPositiveTestBase(){
         String email = "mb@gmail.com", password = "Mb12345$";
         app.getUser().openLoginForm();       //open login form
@@ -41,7 +41,7 @@ public class LoginTests extends TestBase{
     }
 
 
-    @Test
+    @Test(groups = {"regress", "negative"})
     public void loginNegativeTestWrongEmail() {
         String email = "mbgmail.com", password = "Mb12345$";
         app.getUser().openLoginForm();       //open login form
@@ -64,7 +64,7 @@ public class LoginTests extends TestBase{
         Assert.assertTrue(app.getUser().isWrongFormatMessage());
         Assert.assertTrue(app.getUser().isAlertPresent());
     }
-    @AfterMethod
+    @AfterMethod(alwaysRun = true)
     public void tearDown(){
         if(app.getUser().isLogged()){
             app.getUser().logout();

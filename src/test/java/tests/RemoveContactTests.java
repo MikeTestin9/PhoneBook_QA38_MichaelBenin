@@ -9,7 +9,7 @@ public class RemoveContactTests extends TestBase{
 
     Logger logger = LoggerFactory.getLogger(RemoveContactTests.class);
 
-    @BeforeClass
+    @BeforeClass(alwaysRun = true)
     public void precondition() {
         if (!app.getUser().isLogged()) {
             String email = "mb@gmail.com", password = "Mb12345$";
@@ -18,7 +18,7 @@ public class RemoveContactTests extends TestBase{
             app.getUser().submitLogin();
         }
     }
-    @BeforeMethod
+    @BeforeMethod(alwaysRun = true)
     public void pretest(){
         if(app.getContact().isNoContacts()) {
             AddNewContactTests.addNewContactPositive();
@@ -56,7 +56,7 @@ public class RemoveContactTests extends TestBase{
 
     }
 
-    @AfterClass
+    @AfterClass(alwaysRun = true)
     public void tearDown(){
         if(app.getUser().isLogged()){
             app.getUser().logout();

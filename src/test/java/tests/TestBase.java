@@ -19,22 +19,22 @@ public class TestBase {
             System.getProperty("browser", BrowserType.CHROME)
     );
 
-    @BeforeSuite
+    @BeforeSuite(alwaysRun = true)
     public void setUp(){
         app.init();
     }
 
-    @AfterSuite
+    @AfterSuite(alwaysRun = true)
     public void stop(){
         app.tearDown();
     }
 
-    @BeforeMethod
+    @BeforeMethod(alwaysRun = true)
     public void startLogger(Method method){
         logger.info("Method " + method.getName() + " is started");
     }
 
-    @AfterMethod
+    @AfterMethod(alwaysRun = true)
     public void end(){
         logger.info("==================================");
     }

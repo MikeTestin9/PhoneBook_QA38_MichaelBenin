@@ -13,13 +13,13 @@ import org.testng.annotations.Test;
 
 public class RegistrationTests extends TestBase{
 
-    @BeforeMethod
+    @BeforeMethod(alwaysRun = true)
     public void precondition(){
         if(app.getUser().isLogged()){
             app.getUser().logout();
         }
     }
-    @Test
+    @Test(groups = {"smoke", "positive", "regress"})
     public void registrationPositive(){
         int i = (int)(System.currentTimeMillis()/1000)%3600;
 
@@ -34,7 +34,7 @@ public class RegistrationTests extends TestBase{
         Assert.assertTrue(app.getUser().isElementPresent(By.xpath("//button")));
     }
 
-    @Test
+    @Test(groups = {"regress", "negative"})
     public void registrationNegativeWrongEmail(){
         int i = (int)(System.currentTimeMillis()/1000)%3600;
         String email = "mb" + i + "gmail.com", password = "Mb12345$";
@@ -55,7 +55,7 @@ public class RegistrationTests extends TestBase{
         Assert.assertTrue(app.getUser().isAlertPresent());
     }
 
-    @AfterMethod
+    @AfterMethod(alwaysRun = true)
     public void tearDown(){
         if(app.getUser().isLogged()){
             app.getUser().logout();

@@ -1,5 +1,6 @@
 package tests;
 
+import manager.ProviderData;
 import manager.TestNgListener;
 import models.User;
 import org.openqa.selenium.By;
@@ -33,6 +34,16 @@ public class RegistrationTests extends TestBase{
         app.getUser().pause(3000);                  //pause for 3 seconds
         Assert.assertTrue(app.getUser().isElementPresent(By.xpath("//button")));
     }
+    @Test(dataProvider = "userDtoCSV", dataProviderClass = ProviderData.class)
+    public void registrationPositiveDTO(User user){
+
+        app.getUser().openLoginForm();                    //open login form
+        app.getUser().fillLoginForm(user);                //fill login form
+        app.getUser().submitRegistration();               //click on button Registration
+        app.getUser().pause(3000);                  //pause for 3 seconds
+        Assert.assertTrue(app.getUser().isElementPresent(By.xpath("//button")));
+    }
+
 
     @Test(groups = {"regress", "negative"})
     public void registrationNegativeWrongEmail(){

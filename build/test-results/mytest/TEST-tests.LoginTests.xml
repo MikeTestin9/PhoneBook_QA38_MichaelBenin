@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="tests.LoginTests" tests="4" skipped="0" failures="0" errors="0" timestamp="2023-07-21T08:36:21" hostname="LAPTOP-AO3EVK79" time="40.119">
+  <properties/>
+  <testcase name="loginNegativeTestWrongEmail" classname="tests.LoginTests" time="2.319"/>
+  <testcase name="loginNegativeTestWrongPassword" classname="tests.LoginTests" time="4.157"/>
+  <testcase name="loginPositiveTestBase" classname="tests.LoginTests" time="4.16"/>
+  <testcase name="loginPositiveUserData" classname="tests.LoginTests" time="4.111"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[console.warn: LoginRecipes: "Falling back to a synchronous message for: https://telranedu.web.app."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://telranedu.web.app."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://telranedu.web.app."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://telranedu.web.app."
+]]></system-err>
+</testsuite>

@@ -37,10 +37,12 @@ public class RegistrationTests extends TestBase{
     @Test(dataProvider = "userDtoCSV", dataProviderClass = ProviderData.class)
     public void registrationPositiveDTO(User user){
 
-        app.getUser().openLoginForm();                    //open login form
-        app.getUser().fillLoginForm(user);                //fill login form
-        app.getUser().submitRegistration();               //click on button Registration
-        app.getUser().pause(3000);                  //pause for 3 seconds
+        logger.info("Registration starts with email: " + user.getEmail() + " and password: " + user.getPassword());
+
+        app.getUser().openLoginForm();
+        app.getUser().fillLoginForm(user);
+        app.getUser().submitRegistration();
+        app.getUser().pause(3000);
         Assert.assertTrue(app.getUser().isElementPresent(By.xpath("//button")));
     }
 
